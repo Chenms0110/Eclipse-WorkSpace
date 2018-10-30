@@ -55,6 +55,7 @@ public class Pro5 extends Application {
         Scene scene = new Scene(grid, 540, 260);
         primaryStage.setScene(scene);
        
+        primaryStage.setResizable(false);
         //Find a Solution°´Å¥
         Button FindSolution = new Button("Find a Solution");
         FindSolution.setPrefSize(150, 0);  
