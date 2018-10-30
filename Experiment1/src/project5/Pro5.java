@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.scene.image.*;
+
+import java.util.Optional;
 import java.util.Random;
 
 import javax.script.ScriptEngine;
@@ -110,19 +114,52 @@ public class Pro5 extends Application {
         grid.add(h2, 0, 3);
         //Verify的按钮
         
-        
-        
+
+        Alert information = new Alert(Alert.AlertType.INFORMATION,"Welocme to JavaFX");
+        information.setTitle("information"); //设置标题，不设置默认标题为本地语言的information
+       information.setHeaderText("Information"); //设置头标题，默认标题为本地语言的information
         
         Verify.setOnAction(event->{
             ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
             ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("nashorn");
-            String expression = experssion.getText();
-            try {
-                String result = String.valueOf(scriptEngine.eval(expression));
-                System.out.println(result);
-            } catch (ScriptException e) {
-                e.printStackTrace();
+            String expression1 = experssion.getText();
+            int point1 = expression1.indexOf(""+Change(p1),0);
+            int point2 = expression1.indexOf(""+Change(p2),point1+1);
+            int point3 = expression1.indexOf(""+Change(p3),point2+1);
+            int point4 = expression1.indexOf(""+Change(p4),point3+1);
+            if((point1==-1||point2==-1||point3==-1||point4==-1)&&!expression1.equals(""))   //查数字个数
+            {
+            	information.setHeaderText("Wrong Expression");
+            	information.setContentText("没有包含所有的数字，请检查");
+                information.showAndWait(); //显示弹窗，同时后续代码等挂起
             }
+            else {
+                try {
+                    String result = String.valueOf(scriptEngine.eval(expression1));
+          //          experssion.setText(result);
+                    if(result.equals("null")){
+                    	information.setHeaderText("Wrong Answer");
+                    	information.setContentText("请输入表达式后再点击该按钮");
+                    }
+                     else if(result.equals("24.0")||result.equals("24")) {
+                    	information.setHeaderText("Correct Answer");
+                    	information.setContentText("你有、东西！");
+                    }
+                     else {
+                     	information.setHeaderText("Wrong Answer");
+                     	information.setContentText("Wrong!");
+                     }
+                    System.out.println(result);
+                   
+                    information.showAndWait(); //显示弹窗，同时后续代码等挂起
+
+                } catch (ScriptException e) {
+                	information.setHeaderText("Wrong Expression");
+                	information.setContentText("你输入的表达式与人类认知不符");
+                    information.showAndWait(); //显示弹窗，同时后续代码等挂起
+                }
+            }
+
    
         });
         
@@ -139,19 +176,24 @@ public class Pro5 extends Application {
         	p3 = random.nextInt(52)+1;
         	p4 = random.nextInt(52)+1;
         	}while(p1==p2||p1==p3||p1==p4||p2==p3||p2==p4||p3==p4);
+        	
         	poke1.setImage(new Image("file:src/project5/Img/"+p1+".png"));
         	poke2.setImage(new Image("file:src/project5/Img/"+p2+".png"));
         	poke3.setImage(new Image("file:src/project5/Img/"+p3+".png"));
         	poke4.setImage(new Image("file:src/project5/Img/"+p4+".png"));
+        	Cexperssion.setText("");
+        	experssion.setText("");
         });
         
+
+ 
 
 
         primaryStage.setTitle("Project #5:24-Point Card Game");
         primaryStage.show();
     }
 
-    
+
 
 	//取出牌的值
 	public static int Change(int p) {
@@ -262,4 +304,7 @@ public class Pro5 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
+
 }
