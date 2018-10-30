@@ -79,10 +79,10 @@ public class Race extends Application {
         h1.getChildren().addAll(Car1,speed1,Car2,speed2,Car3,speed3,Car4,speed4);
         grid.add(h1, 0, 0);
         
-        Car c1 = new Car(1,10);
-        Car c2 = new Car(2,10);
-        Car c3 = new Car(3,10);
-        Car c4 = new Car(4,10);
+        Car c1 = new Car(1,1);
+        Car c2 = new Car(2,1);
+        Car c3 = new Car(3,1);
+        Car c4 = new Car(4,1);
         ImageView saidao1 = new ImageView(new Image("file:src/project1/Img/赛道.png"));
         ImageView saidao2 = new ImageView(new Image("file:src/project1/Img/赛道.png"));
         ImageView saidao3 = new ImageView(new Image("file:src/project1/Img/赛道.png"));
@@ -111,7 +111,7 @@ public class Race extends Application {
 					@Override
 					public void handle(KeyEvent keyEvent) {
 						if(keyEvent.getCode() == KeyCode.ENTER) {
-						c1.setSpeed(Double.parseDouble(speed1.getText()));
+						c1.setSpeed(Double.parseDouble(speed1.getText())*100);
 		                System.out.println(speed1.getText());
 		               
 		                if(c1.speed==0) {
@@ -139,7 +139,7 @@ public class Race extends Application {
 					@Override
 					public void handle(KeyEvent keyEvent) {
 						if(keyEvent.getCode() == KeyCode.ENTER) {
-						c2.setSpeed(Double.parseDouble(speed2.getText()));
+						c2.setSpeed(Double.parseDouble(speed2.getText())*100);
 		                System.out.println(speed2.getText());
 		                if(c2.speed==0) {
 			        		timeline2.pause();
@@ -163,7 +163,7 @@ public class Race extends Application {
 					@Override
 					public void handle(KeyEvent keyEvent) {
 						if(keyEvent.getCode() == KeyCode.ENTER) {
-						c3.setSpeed(Double.parseDouble(speed3.getText()));
+						c3.setSpeed(Double.parseDouble(speed3.getText())*100);
 		                System.out.println(speed3.getText());
 		                if(c3.speed==0) {
 			        		timeline3.pause();
@@ -187,7 +187,7 @@ public class Race extends Application {
 					@Override
 					public void handle(KeyEvent keyEvent) {
 						if(keyEvent.getCode() == KeyCode.ENTER) {
-						c4.setSpeed(Double.parseDouble(speed4.getText()));
+						c4.setSpeed(Double.parseDouble(speed4.getText())*100);
 		                System.out.println(speed4.getText());
 		                if(c4.speed==0) {
 			        		timeline4.pause();
@@ -252,19 +252,23 @@ public class Race extends Application {
 		// play 40s of animation
 
 		timeline1.setCycleCount(Timeline.INDEFINITE);
+		timeline1.setRate(c1.getSpeed());
 		timeline1.play();		
 		timeline2.setCycleCount(Timeline.INDEFINITE);
+		timeline1.setRate(c1.getSpeed());
 		timeline2.play();       
 		timeline3.setCycleCount(Timeline.INDEFINITE);
+		timeline1.setRate(c1.getSpeed());
 		timeline3.play();      
 		timeline4.setCycleCount(Timeline.INDEFINITE);
+		timeline1.setRate(c1.getSpeed());
 		timeline4.play();
 		
 		
-		speed1.setText("1");
-		speed2.setText("1");
-		speed3.setText("1");
-		speed4.setText("1");
+		speed1.setText("0.01");
+		speed2.setText("0.01");
+		speed3.setText("0.01");
+		speed4.setText("0.01");
 		
         primaryStage.show();
 }
