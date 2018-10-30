@@ -12,7 +12,7 @@ public class Pro3 {
 		System.out.println(getLCM(345,455));
 	}
 	
-	public static int[][] getPrimeFactors(int number) {		
+	public static  int[][] getPrimeFactors(int number) {		
 		ArrayList<Integer> h = new ArrayList<Integer>(); //存素数因子
 		ArrayList<Integer> j = new ArrayList<Integer>(); //存出现次数
 		//一一对应

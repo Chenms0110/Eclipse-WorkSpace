@@ -2,6 +2,10 @@ package project4;
 
 
 public class TestTime {
+	
+	
+	
+	
 	public static void main(String[] args) {
 		Time x1 = new Time(555550000);
 		Time x2 = new Time();
