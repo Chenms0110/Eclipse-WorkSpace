@@ -16,7 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.effect.BlendMode;
 
 import javafx.scene.effect.BoxBlur;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import javafx.scene.paint.CycleMethod;
@@ -39,8 +40,26 @@ import javafx.util.Duration;
 
 public class Car extends Application {
 
- 
+	ImageView car = new ImageView(new Image("file:src/project1/Img/Car.jpg"));
+	int i;         //小车赛道
+	double speed;  //小车速度
 
+ 
+	public Car() {
+		i=0;
+		speed=1;
+	}
+	
+	public Car(int i,double speed) {
+		this.i=i;
+
+		this.speed=speed;
+        car.setFitHeight(50);
+        car.setFitWidth(50);
+	}
+	
+	
+/*
 	@Override
 
 	public void start(Stage primaryStage) {
@@ -149,20 +168,37 @@ public class Car extends Application {
 
 		// play 40s of animation
 
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.setAutoReverse(true);
+		timeline.setRate(10);
 		timeline.play();
+
 
 		
 
 		primaryStage.show();
+		*/
+
+	public double getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(double speed) {
+		if(speed>=0&&speed<=100) {
+			this.speed = speed;
+		}
 
 	}
 
- 
-
-	public static void main(String[] args) {
-
-		launch(args);
-
+	public int getI() {
+		return i;
 	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO 自动生成的方法存根
+		
+	}
+
 
 }
