@@ -35,7 +35,8 @@ public class Pro5 extends Application {
     public void start(Stage primaryStage) throws Exception {
         //利鯉下蕉
         GridPane grid = new GridPane();
-        grid.setAlignment(Pos.TOP_LEFT);
+       // grid.setAlignment(Pos.TOP_LEFT);
+        grid.setAlignment(Pos.CENTER);
         grid.gridLinesVisibleProperty();
         //利鯉換岷寂鉦
         grid.setHgap(10);
@@ -116,7 +117,6 @@ public class Pro5 extends Application {
             ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
             ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("nashorn");
             String expression = experssion.getText();
-
             try {
                 String result = String.valueOf(scriptEngine.eval(expression));
                 System.out.println(result);
@@ -129,8 +129,7 @@ public class Pro5 extends Application {
        	Cexperssion.setEditable(false);
 
         FindSolution.setOnAction(event ->{
-
-        	Cexperssion.setPromptText(opertor());
+        	Cexperssion.setText(opertor());
         });
         
         Refresh.setOnAction(event -> {
@@ -153,7 +152,22 @@ public class Pro5 extends Application {
     }
 
     
+
+	//函竃兎議峙
+	public static int Change(int p) {
+		if(14<=p&&p<=26) {
+			return p-13;
+		}
+		else if(27<=p&&p<=39) {
+			return p-26;
+		}
+		else if(40<=p&&p<=52) {
+			return p-39;
+		}
+		return p;
+	}
     
+    //！！！！！！！！！！！！！！！！！！！！參和葎箔24泣燕器塀麻隈！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 	public String opertor(){
 		int[][] poker    = {{Change(p1),Change(p2),Change(p3),Change(p4)},
 							{Change(p1),Change(p2),Change(p4),Change(p3)},
@@ -203,20 +217,8 @@ public class Pro5 extends Application {
 
 		return "No answer";
 	}
-
-	public static int Change(int p) {
-		if(14<=p&&p<=26) {
-			return p-13;
-		}
-		else if(27<=p&&p<=39) {
-			return p-26;
-		}
-		else if(40<=p&&p<=52) {
-			return p-39;
-		}
-		return p;
-	}
-    
+	
+	
     public static double code(double num1,double num2,int num){
 		double sum=0.0;
 		if(num==0){
@@ -244,10 +246,10 @@ public class Pro5 extends Application {
 				symbol[i]="-";
 				break;
 			case 2:
-				symbol[i]="x";
+				symbol[i]="*";
 				break;
 			case 3:
-				symbol[i]="‖";
+				symbol[i]="/";
 				break;
 			default:
 				break;
@@ -255,7 +257,7 @@ public class Pro5 extends Application {
 		}
 		return symbol;
 	}
-
+    //____________________________________________________________________________________
     
     public static void main(String[] args) {
         launch(args);
