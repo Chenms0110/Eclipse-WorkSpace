@@ -122,12 +122,18 @@ public class Pro5 extends Application {
         Verify.setOnAction(event->{
             ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
             ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("nashorn");
-            String expression1 = experssion.getText();
+            String expression1 = experssion.getText().replaceAll("\\[(.*?)\\]", "($1)");
             int point1 = expression1.indexOf(""+Change(p1),0);
-            int point2 = expression1.indexOf(""+Change(p2),point1+1);
-            int point3 = expression1.indexOf(""+Change(p3),point2+1);
-            int point4 = expression1.indexOf(""+Change(p4),point3+1);
-            if((point1==-1||point2==-1||point3==-1||point4==-1)&&!expression1.equals(""))   //查数字个数
+            int point2 = expression1.indexOf(""+Change(p2),0);
+            int point3 = expression1.indexOf(""+Change(p3),0);
+            int point4 = expression1.indexOf(""+Change(p4),0);
+            
+            if(opertor()=="No answer") {
+            	information.setHeaderText("Correct Answer");
+            	information.setContentText("你有、东西！");
+                information.showAndWait(); //显示弹窗，同时后续代码等挂起
+            }
+            else if((point1==-1||point2==-1||point3==-1||point4==-1)&&!expression1.equals(""))   //查数字个数
             {
             	information.setHeaderText("Wrong Expression");
             	information.setContentText("没有包含所有的数字，请检查");
