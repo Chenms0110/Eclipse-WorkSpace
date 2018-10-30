@@ -72,7 +72,7 @@ public class Race extends Application {
         grid.add(h1, 0, 0);
 }
 	
-    public static void main(String[] args) {
-        launch(args);
-    }
+   // public static void main(String[] args) {
+     //   launch(args);
+   // }
 }
