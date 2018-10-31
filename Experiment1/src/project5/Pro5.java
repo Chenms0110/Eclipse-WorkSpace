@@ -52,7 +52,7 @@ public class Pro5 extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(10, 25, 25, 30));
         //ÐÂ½¨³¡¾°
-        Scene scene = new Scene(grid, 540, 260);
+        Scene scene = new Scene(grid, 480, 260);
         primaryStage.setScene(scene);
        
         primaryStage.setResizable(false);
@@ -208,6 +208,7 @@ public class Pro5 extends Application {
         	experssion.setText("");
         });
 
+        scene.getStylesheets().add(this.getClass().getResource("style.css").toExternalForm());
         primaryStage.setTitle("Project #5:24-Point Card Game");
         primaryStage.show();
     }
