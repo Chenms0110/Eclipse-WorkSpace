@@ -196,6 +196,7 @@ public class Race extends Application {
 			        		timeline4.pause();
 			        		timeline4.setRate(c4.getSpeed());
 			        		timeline4.play();	
+			        		
 		                }
 						}
 					}
