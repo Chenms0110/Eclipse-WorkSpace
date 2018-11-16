@@ -1,10 +1,28 @@
 package project3;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+
 import java.util.AbstractList;
 
 public class Pro3 {
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		while(true) {
+			System.out.println("请输入两个数，输入0退出");
+			int n1 = input.nextInt(); 	//第一个数
+			if(n1 == 0) {				//如果为0，退出循环
+				break;
+			}
+			int n2 = input.nextInt(); 	//得到第二个数
+			if(n1<=0||n2<=0) {
+				System.out.println("输入不能为非正数");
+			}
+			else {
+				System.out.println(n1+"与"+n2+"的最小公倍数是："+getLCM(n1,n2));
+			}
+		}
 		System.out.println(getLCM(120,150));
 		System.out.println(getLCM(7,14));
 		System.out.println(getLCM(7,8));
@@ -37,12 +55,6 @@ public class Pro3 {
 			x[i][1]=j.get(i);
 		}
 		return x;
-	}
-		
-	public static void showL(int[][] x) {
-		for(int i = 0;i<x.length;i++) {
-			System.out.println(x[i][0]+" "+x[i][1]);
-		}
 	}
 	
 	public static int getLCM(int n1,int n2) {     //求最小公倍数，根据两个数的素数因子及出现次数计算。
